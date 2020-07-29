@@ -29,9 +29,9 @@ def concentration_at_M(Mass, k, P, n_s, Omega_b, Omega_m, h, T_CMB=2.7255, delta
     """
     if delta != 200:
         raise Exception("ConcentrationError: delta=%d. Currently only delta=200 supported"%delta)
-    if Mass_type is "mean":
+    if Mass_type == "mean":
         return cluster_toolkit._lib.DK15_concentration_at_Mmean(Mass, _dcast(k), _dcast(P), len(k), delta, n_s, Omega_b, Omega_m, h, T_CMB)
-    elif Mass_type is "crit":
+    elif Mass_type == "crit":
         return cluster_toolkit._lib.DK15_concentration_at_Mcrit(Mass, _dcast(k), _dcast(P), len(k), delta, n_s, Omega_b, Omega_m, h, T_CMB)
     else:
         raise Exception("ConcentrationError: must choose either 'mean' or 'crit', %s is not supported"%Mass_type)
